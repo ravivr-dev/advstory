@@ -5,8 +5,8 @@ class TrayListStyle {
   /// Creates styles for tray list.
   const TrayListStyle({
     this.direction = Axis.horizontal,
-    this.spacing = 12.0,
-    this.padding = const EdgeInsets.symmetric(horizontal: 12.0),
+    this.spacing = 10.0,
+    this.padding = const EdgeInsets.symmetric(horizontal: 20.0),
   });
 
   /// Tray list direction. Trays can be stacked vertically or horizontally.
