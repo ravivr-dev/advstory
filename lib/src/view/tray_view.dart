@@ -211,9 +211,6 @@ class _TrayViewState extends State<TrayView> with TickerProviderStateMixin {
             return Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                const SizedBox(
-                  width: 10,
-                ),
                 widget.initialWidget,
                 const SizedBox(
                   width: 10,
