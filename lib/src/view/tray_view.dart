@@ -203,6 +203,25 @@ class _TrayViewState extends State<TrayView> with TickerProviderStateMixin {
               child: tray,
             );
           }
+          if (index == 0) {
+            return Row(
+              children: [
+                Container(
+                  height: 166,
+                  width: 94,
+                  color: Colors.deepOrange,
+                ),
+                GestureDetector(
+                  onTap: () => _handleTrayTap(
+                    context: context,
+                    tray: tray,
+                    index: index,
+                  ),
+                  child: tray,
+                )
+              ],
+            );
+          }
 
           return GestureDetector(
             onTap: () => _handleTrayTap(
