@@ -245,7 +245,7 @@ class _AdvStoryTrayState extends AnimatedTrayState<AdvStoryTray>
                               )),
                           child: CircleAvatar(
                             radius: 18,
-                            backgroundColor: Colors.grey,
+                            backgroundColor: Colors.white,
                             child: widget.profileUrl != null &&
                                     widget.profileUrl!.isNotEmpty
                                 ? Image.network(
@@ -253,8 +253,9 @@ class _AdvStoryTrayState extends AnimatedTrayState<AdvStoryTray>
                                     fit: BoxFit.cover,
                                   )
                                 : const Icon(
-                                    Icons.account_circle_rounded,
-                                    size: 36,
+                                    Icons.person,
+                                    color: Colors.black,
+                                    size: 40,
                                   ),
                           ),
                         ),
