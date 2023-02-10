@@ -31,7 +31,7 @@ typedef AnimationNotifierCallback = void Function(bool shouldAnimate);
 /// * On a tray tap.
 /// * On a story skipped or closed.
 /// * On a content skipped.
-/// * On pause
+/// * On paufse
 /// * On resume
 typedef StoryEventCallback = FutureOr<void> Function(
   /// Event type

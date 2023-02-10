@@ -46,6 +46,7 @@ class AdvStoryTray extends AnimatedTray {
     this.strokeWidth = 2,
     this.animationDuration = const Duration(milliseconds: 1200),
     double? borderRadius,
+    this.profileUrl,
   })  : assert(
           (() => shape == BoxShape.circle ? size.width == size.height : true)(),
           'Size width and height must be equal for a circular tray',
@@ -90,6 +91,9 @@ class AdvStoryTray extends AnimatedTray {
 
   /// Rotate animation duration of the border.
   final Duration animationDuration;
+
+  /// User Pic
+  final String? profileUrl;
 
   @override
   AnimatedTrayState<AdvStoryTray> createState() => _AdvStoryTrayState();
@@ -193,32 +197,69 @@ class _AdvStoryTrayState extends AnimatedTrayState<AdvStoryTray>
                   borderRadius: BorderRadius.circular(
                     widget.borderRadius - (widget.strokeWidth + widget.gapSize),
                   ),
-                  child: Image.network(
-                    widget.url,
-                    width: widget.size.width -
-                        (widget.gapSize + widget.strokeWidth) * 2,
-                    height: widget.size.height -
-                        (widget.gapSize + widget.strokeWidth) * 2,
-                    fit: BoxFit.cover,
-                    frameBuilder: (context, child, frame, _) {
-                      return frame != null
-                          ? TweenAnimationBuilder<double>(
-                              tween: Tween<double>(begin: .1, end: 1),
-                              curve: Curves.ease,
-                              duration: const Duration(milliseconds: 300),
-                              builder:
-                                  (BuildContext context, double opacity, _) {
-                                return Opacity(
-                                  opacity: opacity,
-                                  child: child,
-                                );
-                              },
-                            )
-                          : Shimmer(style: widget.shimmerStyle);
-                    },
-                    errorBuilder: (_, __, ___) {
-                      return const Icon(Icons.error);
-                    },
+                  child: Container(
+                    foregroundDecoration:
+                        BoxDecoration(color: Colors.black.withOpacity(.5)),
+                    child: Stack(
+                      children: [
+                        Image.network(
+                          widget.url,
+                          width: widget.size.width -
+                              (widget.gapSize + widget.strokeWidth) * 2,
+                          height: widget.size.height -
+                              (widget.gapSize + widget.strokeWidth) * 2,
+                          fit: BoxFit.cover,
+                          frameBuilder: (context, child, frame, _) {
+                            return frame != null
+                                ? TweenAnimationBuilder<double>(
+                                    tween: Tween<double>(begin: .1, end: 1),
+                                    curve: Curves.ease,
+                                    duration: const Duration(milliseconds: 300),
+                                    builder: (BuildContext context,
+                                        double opacity, _) {
+                                      return Opacity(
+                                        opacity: opacity,
+                                        child: child,
+                                      );
+                                    },
+                                  )
+                                : Shimmer(style: widget.shimmerStyle);
+                          },
+                          errorBuilder: (_, __, ___) {
+                            return const Icon(Icons.error);
+                          },
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            height: 44,
+                            width: 44,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.transparent,
+                                border: Border.all(
+                                  color: Colors.white,
+                                  width: 2,
+                                )),
+                            child: CircleAvatar(
+                              radius: 18,
+                              backgroundColor: Colors.grey,
+                              child: widget.profileUrl != null &&
+                                      widget.profileUrl!.isNotEmpty
+                                  ? Image.network(
+                                      widget.profileUrl!,
+                                      fit: BoxFit.cover,
+                                    )
+                                  : const Icon(
+                                      Icons.account_circle_rounded,
+                                      size: 36,
+                                    ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
