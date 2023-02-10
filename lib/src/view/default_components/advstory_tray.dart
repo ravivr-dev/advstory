@@ -197,12 +197,12 @@ class _AdvStoryTrayState extends AnimatedTrayState<AdvStoryTray>
                   borderRadius: BorderRadius.circular(
                     widget.borderRadius - (widget.strokeWidth + widget.gapSize),
                   ),
-                  child: Container(
-                    foregroundDecoration:
-                        BoxDecoration(color: Colors.black.withOpacity(.5)),
-                    child: Stack(
-                      children: [
-                        Image.network(
+                  child: Stack(
+                    children: [
+                      Container(
+                        foregroundDecoration:
+                            BoxDecoration(color: Colors.black.withOpacity(.5)),
+                        child: Image.network(
                           widget.url,
                           width: widget.size.width -
                               (widget.gapSize + widget.strokeWidth) * 2,
@@ -229,37 +229,38 @@ class _AdvStoryTrayState extends AnimatedTrayState<AdvStoryTray>
                             return const Icon(Icons.error);
                           },
                         ),
-                        Align(
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: 44,
+                          width: 44,
                           alignment: Alignment.center,
-                          child: Container(
-                            height: 44,
-                            width: 44,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.transparent,
-                                border: Border.all(
-                                  color: Colors.white,
-                                  width: 2,
-                                )),
-                            child: CircleAvatar(
-                              radius: 18,
-                              backgroundColor: Colors.grey,
-                              child: widget.profileUrl != null &&
-                                      widget.profileUrl!.isNotEmpty
-                                  ? Image.network(
-                                      widget.profileUrl!,
-                                      fit: BoxFit.cover,
-                                    )
-                                  : const Icon(
-                                      Icons.account_circle_rounded,
-                                      size: 36,
-                                    ),
-                            ),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.transparent,
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 2,
+                              )),
+                          child: CircleAvatar(
+                            radius: 18,
+                            backgroundColor: Colors.grey,
+                            child: widget.profileUrl != null &&
+                                    widget.profileUrl!.isNotEmpty
+                                ? Image.network(
+                                    widget.profileUrl!,
+                                    fit: BoxFit.cover,
+                                  )
+                                : const Icon(
+                                    Icons.account_circle_rounded,
+                                    color: Colors.white,
+                                    size: 40,
+                                  ),
                           ),
-                        )
-                      ],
-                    ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
               ),
