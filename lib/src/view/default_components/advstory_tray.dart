@@ -243,20 +243,27 @@ class _AdvStoryTrayState extends AnimatedTrayState<AdvStoryTray>
                                 color: Colors.white,
                                 width: 2,
                               )),
-                          child: CircleAvatar(
-                            radius: 18,
-                            backgroundColor: Colors.white,
-                            child: widget.profileUrl != null &&
-                                    widget.profileUrl!.isNotEmpty
-                                ? Image.network(
-                                    widget.profileUrl!,
-                                    fit: BoxFit.cover,
-                                  )
-                                : const Icon(
-                                    Icons.person,
-                                    color: Colors.black54,
-                                    size: 30,
-                                  ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(18),
+                            child: Container(
+                              height: 36,
+                              width: 36,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white,
+                              ),
+                              child: widget.profileUrl != null &&
+                                      widget.profileUrl!.isNotEmpty
+                                  ? Image.network(
+                                      widget.profileUrl!,
+                                      fit: BoxFit.cover,
+                                    )
+                                  : const Icon(
+                                      Icons.person,
+                                      color: Colors.black54,
+                                      size: 30,
+                                    ),
+                            ),
                           ),
                         ),
                       )
