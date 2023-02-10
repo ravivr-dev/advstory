@@ -255,7 +255,7 @@ class _AdvStoryTrayState extends AnimatedTrayState<AdvStoryTray>
                                 : const Icon(
                                     Icons.person,
                                     color: Colors.black54,
-                                    size: 36,
+                                    size: 30,
                                   ),
                           ),
                         ),
