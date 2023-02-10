@@ -210,13 +210,13 @@ class _TrayViewState extends State<TrayView> with TickerProviderStateMixin {
           if (index == 0) {
             return Row(
               children: [
-                const SizedBox(
-                  width: 10,
-                ),
+                // const SizedBox(
+                //   width: 10,
+                // ),
                 widget.initialWidget,
-                const SizedBox(
-                  width: 10,
-                ),
+                // const SizedBox(
+                //   width: 10,
+                // ),
                 GestureDetector(
                   onTap: () => _handleTrayTap(
                     context: context,
