@@ -209,14 +209,15 @@ class _TrayViewState extends State<TrayView> with TickerProviderStateMixin {
           }
           if (index == 0) {
             return Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                // const SizedBox(
-                //   width: 10,
-                // ),
+                const SizedBox(
+                  width: 10,
+                ),
                 widget.initialWidget,
-                // const SizedBox(
-                //   width: 10,
-                // ),
+                const SizedBox(
+                  width: 10,
+                ),
                 GestureDetector(
                   onTap: () => _handleTrayTap(
                     context: context,
@@ -227,16 +228,18 @@ class _TrayViewState extends State<TrayView> with TickerProviderStateMixin {
                 )
               ],
             );
+          }else{
+            return GestureDetector(
+              onTap: () => _handleTrayTap(
+                context: context,
+                tray: tray,
+                index: index,
+              ),
+              child: tray,
+            );
           }
 
-          return GestureDetector(
-            onTap: () => _handleTrayTap(
-              context: context,
-              tray: tray,
-              index: index,
-            ),
-            child: tray,
-          );
+
         },
         separatorBuilder: (context, index) => SizedBox(
           width: widget.style.trayListStyle.direction == Axis.vertical
