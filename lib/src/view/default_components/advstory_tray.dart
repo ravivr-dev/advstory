@@ -254,8 +254,7 @@ class _AdvStoryTrayState extends AnimatedTrayState<AdvStoryTray>
                                   )
                                 : const Icon(
                                     Icons.account_circle_rounded,
-                                    color: Colors.white,
-                                    size: 40,
+                                    size: 36,
                                   ),
                           ),
                         ),
